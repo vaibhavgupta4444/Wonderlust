@@ -31,7 +31,7 @@ app.engine('ejs', ejsMate);
 const store=MongoStore.create({
     mongoUrl:url,
     crypto:{
-        secret:"superSecret",
+        secret:process.env.SECRET,
     },
     touchAfter:24*3600,
 });
@@ -42,7 +42,7 @@ store.on("error",(err)=>{
 
 const sessionOption={
     store,
-    secret:"superSecret",
+    secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
