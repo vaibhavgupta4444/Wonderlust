@@ -1,0 +1,104 @@
+<% layout("/layouts/boilerPlate.ejs") %>
+  
+<body>
+    <!-- <h1>All listings</h1> -->
+    <!-- <form method="get" action="/listings/new">
+        <button>Add new</button>
+    </form>     -->
+    <div class="toggle-bar row">
+    <div class="col-sm-12 col-md-9 col-lg-9" id="filters">
+        <form class="filter" action="/listings">
+            <button name="category" value="trending">
+                <i class="fa-solid fa-fire"></i>
+                <p>Trending</p>
+            </button>
+        </form>
+        <form class="filter" action="/listings">
+            <button name="category" value="room">
+                <i class="fa-solid fa-bed"></i>
+                <p>Room</p>
+            </button>
+        </form>
+        <form class="filter" action="/listings">
+            <button name="category" value="mountain city">
+                <i class="fa-solid fa-mountain-city"></i>
+                <p>Mountain Cities</p>
+            </button>
+        </form>
+        <form class="filter" action="/listings">
+            <button name="category" value="mountain">
+                <i class="fa-solid fa-mountain"></i>
+                <p>Mountain</p>
+            </button>
+        </form>
+        <form class="filter" action="/listings">
+            <button name="category" value="castle">
+                <i class="fa-brands fa-fort-awesome"></i>
+                <p>Castles</p>
+            </button>
+        </form>
+        <form class="filter" action="/listings">
+            <button name="category" value="amazing pool">
+                <i class="fa-solid fa-person-swimming"></i>
+                <p>Amazing Pools</p>
+            </button>
+        </form>
+        <form class="filter" action="/listings">
+            <button name="category" value="camping">
+                <i class="fa-solid fa-campground"></i>
+                <p>Camping</p>
+            </button>
+        </form>
+        <form class="filter" action="/listings">
+            <button name="category" value="farm">
+                <i class="fa-solid fa-cow"></i>
+                <p>Farms</p>
+            </button>
+        </form>
+        <form class="filter" action="/listings">
+            <button name="category" value="arctic">
+                <i class="fa-regular fa-snowflake"></i>
+                <p>Arctic</p>
+            </button>
+        </form>
+        <!-- <form class="filter">
+            <i class="fa-solid fa-igloo"></i>
+            <p>Dome</p>
+        </form>-->
+        <form class="filter" action="/listings">
+            <button name="category" value="boat">
+                <i class="fa-solid fa-ship"></i>
+                <p>Boat</p>
+            </button>
+        </form>
+    </div>    
+        <div class="toggle-taxes col-md-3 col-lg-3">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" id="taxLabel" for="flexSwitchCheckDefault">Display total before taxes</label>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-1">
+        <%documents.forEach(listing => {%>
+            <%let price=listing.price;%>
+            <%let priceWithGst=listing.price*0.18+listing.price;%>
+            <a class="show-link" href="/listings/<%=listing.id%>">
+                <div class="card">
+                    <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image">
+                    <div class="card-img-overlay">
+                    
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><b><%=listing.title%></b><br>&#8377;<span class="originalTax"><%=price.toLocaleString("en-In")%></span><span class="taxWithGst"><%=priceWithGst.toLocaleString("en-In")%></span>/night</p>
+                    </div>
+                </div>
+            </a>
+        <%})%>
+
+    </div>
+    
+
+</body>
+<script src="/js/showTax.js"></script>
+    

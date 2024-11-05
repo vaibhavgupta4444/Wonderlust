@@ -1,0 +1,61 @@
+<% layout("/layouts/boilerPlate.ejs") %>
+
+<body>
+    <form method="post" action="/listings/<%=list.id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="row mt-3 mb-3">
+            <div class="col-8 offset-2">
+                <div class="mb-2">
+                    <label for="title" class="form-label">Title</label>
+                    <input id="title" class="form-control" name="listing[title]" type="text" value="<%=list.title%>" required/>
+                    <div class="valid-feedback">Look's Good</div>
+                </div>
+                <div class="mb-2 position-relative">
+                    <label for="category" class="form-label">Category</label>
+                    <select id="category" class="form-control" name="listing[category]">
+                        <option value="<%=list.category%>" hidden></option>
+                        <option value="trending">Trending</option>
+                        <option value="room">Room</option>
+                        <option value="mountain city">Mountain city</option>
+                        <option value="mountain">Mountain</option>
+                        <option value="castle">Castle</option>
+                        <option value="amazing pool">Amazing Pool</option>
+                        <option value="camping">Camping</option>
+                        <option value="farm">Farm</option>
+                        <option value="arctic">Arctic</option>
+                        <option value="boat">Boat</option>
+                    </select>       
+                </div>
+                <div class="mb-2">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" class="form-control" name="listing[description]" required ><%=list.description%></textarea>
+                    <div class="invalid-feedback">Description should be valid</div>
+                </div>
+                <div class="mb-2">
+                    <p>Original Image</p>
+                    <img class="originalImg" src="<%=originalUrl%>" />
+                </div>
+                <div class="mb-2">
+                    <label for="image" class="form-label">Upload New Image</label>
+                    <input name="listing[image]" id="image" class="form-control" type="file" />
+                </div>
+                <div class="mb-2">
+                    <label for="price" class="form-label">Price</label>
+                    <input name="listing[price]" id="price" class="form-control" type="number" value="<%=list.price%>" required/>
+                    <div class="invalid-feedback">Price should be valid</div>
+                </div>
+                <div class="mb-2">
+                    <label for="location" class="form-label">Location</label>
+                    <input name="listing[location]" id="location" class="form-control" type="text" value="<%=list.location%>" required/>
+                    <div class="invalid-feedback">Location should be valid</div>
+                </div>
+                <div class="mb-2">
+                    <label for="country" class="form-label">Country</label>
+                    <input name="listing[country]" id="country" class="form-control" type="text" value="<%=list.country%>" required />
+                    <div class="invalid-feedback">Country should be valid</div>
+                </div>
+                <button class="btn btn-dark mt-3">Edit</button>
+            </div>
+        </div>
+    </form>    
+</body>
+<script src="/js/autoSelect.js"></script>

@@ -1,0 +1,63 @@
+<% layout("/layouts/boilerPlate.ejs") %>
+
+<body>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+
+        <form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+            <div class="mb-2 position-relative">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="listing[title]" placeholder="Add a Catchy title" required>
+                <div class="valid-feedback">Look's Good</div>
+            </div>
+            <div class="mb-2 position-relative">
+                <label for="category" class="form-label">Category</label>
+                <select id="category" class="form-control" name="listing[category]" required>
+                    <option value="trending">---Select Category---</option>
+                    <option value="trending">Trending</option>
+                    <option value="room">Room</option>
+                    <option value="mountain city">Mountain city</option>
+                    <option value="mountain">Mountain</option>
+                    <option value="castle">Castle</option>
+                    <option value="amazing pool">Amazing Pool</option>
+                    <option value="camping">Camping</option>
+                    <option value="farm">Farm</option>
+                    <option value="arctic">Arctic</option>
+                    <option value="boat">Boat</option>
+                </select>       
+            </div>
+            <div class="mb-2 position-relative">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" name="listing[description]" class="form-control" placeholder="Write about it.." required></textarea>
+                <div class="invalid-feedback">Description should be valid</div>
+            </div>
+            <div class="mb-2 position-relative">
+                <label for="image" class="form-label">Upload Listing Image</label>
+                <input id="image" class="form-control" name="listing[image]" type="file" required/>   
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 mb-2 position-relative">
+                    <label for="price" class="form-label">Price</label>
+                    <input id="price" name="listing[price]" class="form-control" placeholder="1000" required>
+                    <div class="invalid-feedback">Price should be valid</div>
+                </div>
+                <div class="col-sm-12 col-md-6 mb-2 position-relative">
+                    <label for="location" class="form-label">Location</label>
+                    <input id="location" class="form-control" name="listing[location]" type="text" placeholder="Varansi, Uttar Pradesh" required/> 
+                    <div class="invalid-feedback">Location should be valid</div>
+                </div>
+            </div>
+            <div class="mb-2 position-relative">
+                <label for="country" class="form-label">Country</label>
+                <input id="country" class="form-control" name="listing[country]" type="text" placeholder="India" required />
+                <div class="invalid-feedback">Country should be valid</div>
+            
+            </div>
+            <button class="btn btn-success red-button mt-5">Add</button>
+        </form>  
+        
+                
+    </div>
+</div>    
+        <br><br>
+</body>
